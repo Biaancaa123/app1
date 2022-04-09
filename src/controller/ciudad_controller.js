@@ -1,43 +1,43 @@
-const usuarioService = require('../services/usuario/usuarios_services');
+const ciudadService = require('../services/ciudad/ciudad_services');
 
 const list = async (req, res) => {
-  const usuarios = await usuarioService.list(req.query.q);
+  const ciudad = await ciudadService.list(req.query.q);
   res.send({
     success: true,
-    usuarios,
+    ciudad,
   });
 };
 
 const getById = async (req, res) => {
-  const usuario = await usuarioService.getById(req.params.id);
+  const ciudad = await ciudadService.getById(req.params.id);
 
   const jsonResultado = req.query;
   jsonResultado['success'] = true;
-  jsonResultado['usuario'] = usuario;
+  jsonResultado['ciudad'] = ciudad;
 
   res.status(201).send(jsonResultado);
 };
 
 const create = async (req, res) => {
-  const usuario = await usuarioService.create(req.body);
+  const ciudad = await ciudadService.create(req.body);
 
   res.status(202).send({
     success: true,
-    usuario,
+    ciudad,
   });
 };
 
 const update = async (req, res) => {
-  const usuario = await usuarioService.update(req.body);
+  const ciudad = await ciudadService.update(req.body);
 
   res.status(202).send({
     success: true,
-    usuario,
+    ciudad,
   });
 };
 
 const remove = async (req, res) => {
-  const booleanValue = await usuarioService.remove(req.params.id);
+  const booleanValue = await ciudadService.remove(req.params.id);
 
   res.status(202).send({
     success: booleanValue,

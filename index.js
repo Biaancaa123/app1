@@ -16,6 +16,12 @@ app.get('/', (req, res) => {
 const usuarioRouter = require('./src/routes/usuario_routes');
 app.use('/usuarios', usuarioRouter);
 
+const ciudadRouter = require('./src/routes/ciudad_routes');
+app.use('/ciudad', ciudadRouter);
+
+const hospitalRouter = require('./src/routes/hospital_routes');
+app.use('/hospital', hospitalRouter);
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

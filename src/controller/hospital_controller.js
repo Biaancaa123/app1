@@ -1,43 +1,43 @@
-const usuarioService = require('../services/usuario/usuarios_services');
+const hospitalService = require('../services/hospital/hospital_services');
 
 const list = async (req, res) => {
-  const usuarios = await usuarioService.list(req.query.q);
+  const hospital = await hospitalService.list(req.query.q);
   res.send({
     success: true,
-    usuarios,
+    hospital,
   });
 };
 
 const getById = async (req, res) => {
-  const usuario = await usuarioService.getById(req.params.id);
+  const hospital = await hospitalService.getById(req.params.id);
 
   const jsonResultado = req.query;
   jsonResultado['success'] = true;
-  jsonResultado['usuario'] = usuario;
+  jsonResultado['hospital'] = hospital;
 
   res.status(201).send(jsonResultado);
 };
 
 const create = async (req, res) => {
-  const usuario = await usuarioService.create(req.body);
+  const hospital = await hospitalService.create(req.body);
 
   res.status(202).send({
     success: true,
-    usuario,
+    hospital,
   });
 };
 
 const update = async (req, res) => {
-  const usuario = await usuarioService.update(req.body);
+  const hospital = await hospitalService.update(req.body);
 
   res.status(202).send({
     success: true,
-    usuario,
+    hospital,
   });
 };
 
 const remove = async (req, res) => {
-  const booleanValue = await usuarioService.remove(req.params.id);
+  const booleanValue = await hospitalService.remove(req.params.id);
 
   res.status(202).send({
     success: booleanValue,
